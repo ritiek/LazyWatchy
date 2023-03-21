@@ -3,6 +3,7 @@
 
 #include <Arduino.h>
 #include <WiFiManager.h>
+#include <WiFiMulti.h>
 #include <HTTPClient.h>
 #include <NTPClient.h>
 #include <WiFiUdp.h>
@@ -57,12 +58,15 @@ public:
   void vibMotor(uint8_t intervalMs = 100, uint8_t length = 20);
 
   void handleButtonPress();
+  void watchFaceBackButton();
+  void watchFaceUpButton();
+  void watchFaceDownButton();
   void showMenu(byte menuIndex, bool partialRefresh);
-  void showFastMenu(byte menuIndex);
+  void showSubMenu(byte menuIndex, bool partialRefresh);
   void showAbout();
   void showBuzz();
   void showAccelerometer();
-  void showUpdateFW();
+  void refreshDisplay();
   void showSyncNTP();
   bool syncNTP();
   bool syncNTP(long gmt);
@@ -73,7 +77,6 @@ public:
   weatherData getWeatherData();
   weatherData getWeatherData(String cityID, String units, String lang,
                              String url, String apiKey, uint8_t updateInterval);
-  void updateFWBegin();
 
   void showWatchFace(bool partialRefresh);
   virtual void drawWatchFace(); // override this method for different watch

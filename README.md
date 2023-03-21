@@ -1,32 +1,22 @@
-# Watchy - Fully Open Source E-Paper Watch
+# LazyWatchy
 
-![Watchy](https://watchy.sqfmi.com/img/watchy_render.png)
+Personalizing Watchy for me. Following are the differences in original Watchy and LazyWatchy:
 
-**Buy Watchy at [Crowd Supply](https://www.crowdsupply.com/sqfmi/watchy) and [Mouser](https://www.mouser.com/ProductDetail/SQFMI/SQFMI-WATCHY-10?qs=DRkmTr78QARN9VSJRzqRxw%3D%3D)!**
-
-[**Watchy Case & Accessories**](https://shop.sqfmi.com)
-
-Visit [**https://watchy.sqfmi.com**](https://watchy.sqfmi.com) for documentation, hardware design files, and more!
-
-## Setup
-1. In the Arduino IDE Boards Manager, [install support for the ESP32](https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html).
-    * Arduino > Preferences > Additional Board Manager URLs
-    * ```https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json```
-2. Install this library (search for **Watchy** in the library manager), and any other dependencies when prompted
-3. Check out the examples under ```Examples``` -> ```Watchy```
-4. Compile & Upload with these board settings:
-    * Board: "Watchy"
-    * Partition Scheme: "Huge App"
-    * Board Revision: Choose your Watchy version
-    * All Other Settings: leave to default
-
-You may also have to install the [CP2104 USB to Serial drivers](https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers) if the port is not automatically detected.
-
-### Have Fun! :)
+- Disable RTC wakeup interrupts (press back button on WatchFace screen to read RTC and update display), saves battery.
+- Remove bluetooth firmware update capabilities (won't probably use it).
+- Experimental sub-menus.
+- Partial refreshes only. A separate menu option has been provided in order to full refresh display.
+- Define `watchFaceUpButton` and `watchFaceDownButton` to execute custom actions when on WatchFace screen.
 
 
-### Got Questions?
+## How to use?
 
-Join our [Discord](https://discord.gg/ZXDegGV8E7)
+Download a WatchFace and update `lib_deps` in its platformio.ini to point to `LazyWatchy` instead of the default
+`Watchy` repository:
+```
+https://github.com/ritiek/LazyWatchy.git
+```
+It should work with most WatchFaces but it really depends on what library features your favourite WatchFace
+overrides.
 
-
+I use the Mario WatchFace.
